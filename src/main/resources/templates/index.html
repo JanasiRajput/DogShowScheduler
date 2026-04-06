@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dog Show Management | Dashboard</title>
+    <!-- Modern Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <style>
+        body {
+            background-color: #d0f0c0; /* Light green background */
+            font-family: 'Montserrat', Arial, sans-serif;
+            color: #064635;
+            min-height: 100vh;
+            padding-top: 50px;
+        }
+
+        .navbar {
+            background-color: #0b8f63; /* Dark green navbar */
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .navbar-brand {
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 1.5rem;
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        .main-container {
+            padding: 3rem 1rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .hero-section {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 1px 1px #a3d9a5;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #0b8f63;
+        }
+
+        /* Dashboard Grid styling */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .dashboard-card {
+            background-color: #ffffff;
+            border-radius: 15px;
+            padding: 30px 20px;
+            text-align: center;
+            text-decoration: none;
+            color: #064635;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            background-color: #f5fcf5;
+            color: #0b8f63;
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            color: #0b8f63;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .card-desc {
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .img-banner {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+    </style>
+</head>
+<body>
+
+<!-- Top Navigation -->
+<nav class="navbar navbar-dark">
+    <div class="container justify-content-center">
+        <a class="navbar-brand text-decoration-none" href="#"><i class="bi bi-house-door-fill"></i> ShowTrack Pro</a>
+    </div>
+</nav>
+
+<!-- Main Dashboard -->
+<div class="main-container text-center">
+    <!-- Displaying the dog show owner image nicely -->
+    <img th:src="@{/image/owner.jpg}" alt="Owners" class="img-banner">
+    
+    <div class="hero-section">
+        <h1 class="hero-title">Admin Dashboard</h1>
+        <p class="hero-subtitle">Manage dog shows, owners, and judging assignments</p>
+    </div>
+    
+    <div class="dashboard-grid">
+        <a th:href="@{/owners}" class="dashboard-card">
+            <i class="bi bi-people-fill card-icon"></i>
+            <h3 class="card-title">Owners Portal</h3>
+            <span class="card-desc">Manage profiles and active participations.</span>
+        </a>
+        
+        <a th:href="@{/dogs}" class="dashboard-card">
+            <i class="bi bi-suit-heart-fill card-icon"></i>
+            <h3 class="card-title">Show Dogs</h3>
+            <span class="card-desc">View registries and oversee all dog entries.</span>
+        </a>
+        
+        <a th:href="@{/judges}" class="dashboard-card">
+            <i class="bi bi-award-fill card-icon"></i>
+            <h3 class="card-title">Judges Panel</h3>
+            <span class="card-desc">Coordinate certified judging staff for events.</span>
+        </a>
+        
+        <a th:href="@{/dogs/assignOwner}" class="dashboard-card">
+            <i class="bi bi-person-lines-fill card-icon"></i>
+            <h3 class="card-title">Owner Assignment</h3>
+            <span class="card-desc">Link a dog to their rightful owner.</span>
+        </a>
+        
+        <a th:href="@{/dogs/assignJudge}" class="dashboard-card">
+            <i class="bi bi-clipboard-check-fill card-icon"></i>
+            <h3 class="card-title">Judge Assignment</h3>
+            <span class="card-desc">Allocate qualified judges to specific dogs.</span>
+        </a>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
